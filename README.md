@@ -96,7 +96,7 @@ Requires Rust 1.70+ (Stable for basic use, Nightly only if `portable_simd` enabl
 
 ```bash
 # Clone and run the comprehensive benchmark suite
-git clone https://github.com/mcsimon/parcore.git
+git clone https://github.com/mc-simon-cd/parcore.git
 cd parcore
 cargo run --release
 ```
@@ -106,6 +106,7 @@ cargo run --release
 ## License
 
 Apache License, Version 2.0. See [LICENSE](LICENSE) for details.
+# parcore
 # parcore
 # parcore
 # parcore
