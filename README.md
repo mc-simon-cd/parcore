@@ -1,4 +1,4 @@
-# ParCore 🦀⚡
+# ParCore: A Parallel Runtime for Rust 🦀⚡
 
 > **High-performance parallel runtime system in Rust — inspired by CUDA & OpenCL**
 
