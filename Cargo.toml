@@ -1,0 +1,48 @@
+[package]
+name = "parcore"
+version = "0.1.0"
+edition = "2021"
+description = "High-performance parallel runtime system inspired by CUDA/OpenCL"
+authors = ["ParCore Authors"]
+license = "Apache-2.0"
+repository = "https://github.com/mc-simon-cd/parcore.git"
+homepage = "https://github.com/mc-simon-cd/parcore"
+
+[[bin]]
+name = "parcore"
+path = "src/main.rs"
+
+[lib]
+name = "parcore"
+path = "src/lib.rs"
+
+[dependencies]
+# Lock-free work-stealing deques and multi-producer/consumer channels
+crossbeam = "0.8"
+crossbeam-deque = "0.8"
+crossbeam-channel = "0.5"
+
+# Fast parking-lot-based mutexes and read-write locks
+parking_lot = "0.12"
+
+# Detect available logical CPUs at runtime
+num_cpus = "1"
+
+# Stable SIMD wrapper
+wide = "0.7"
+
+# GPU Acceleration
+wgpu = "0.19"
+bytemuck = { version = "1.14", features = ["derive"] }
+pollster = "0.3"
+futures = "0.3"
+dashmap = "5.5"
+
+[features]
+nightly = []
+
+[profile.release]
+opt-level = 3
+lto = true
+codegen-units = 1
+panic = "abort"

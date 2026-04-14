@@ -1,0 +1,33 @@
+# .claudeignore
+# Files and directories Claude/AI agents should ignore or treat as low-priority
+
+# Build artifacts
+target/
+*.rlib
+*.rmeta
+*.d
+*.pdb
+
+# Lock file — read-only reference, do not modify manually
+# Cargo.lock
+
+# IDE / editor configs
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+
+# Temporary / generated
+*.tmp
+*.bak
+*.orig
+
+# Benchmark outputs
+flamegraph.svg
+perf.data*
+callgrind.out*
+
+# Large binary / data files that should not be read
+*.bin
+*.dat

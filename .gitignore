@@ -1,0 +1,11 @@
+# Rust
+/target
+Cargo.lock
+
+# IDEs
+.idea/
+.vscode/
+
+# Backup
+*.rs.bk
+*.bak
