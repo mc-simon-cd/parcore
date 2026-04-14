@@ -106,5 +106,5 @@ cargo run --release
 ## License
 
 Apache License, Version 2.0. See [LICENSE](LICENSE) for details.
-# parcore
+# # ParCore: A Parallel Runtime for Rust
 
