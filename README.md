@@ -35,7 +35,7 @@ It targets **CPU/NPU** execution (fully **RISC-V compatible**) while offering a 
 *   🔀 **Smart Scheduler**: Hybrid spin/yield back-off for ultra-low latency barriers.
 *   🧠 **Unified Memory**: `SharedBuffer<T>` for zero-copy data sharing with **Lazy Sync** coherence.
 *   🎮 **WGPU Acceleration**: Specialized parallel dispatch for GPUs/NPUs via vectorized WGSL kernels.
-*   🔧 **Hardware-Agnostic**: **Adaptive tiling** automatischly tuned to hardware cache/compute budgets.
+*   🔧 **Hardware-Agnostic**: **Adaptive tiling** automatically tuned to hardware cache/compute budgets.
 *   🛡️ **Safe by Design**: Strictly audited `unsafe` usage, fully compliant with **Apache 2.0**.
 
 ---
@@ -107,6 +107,3 @@ cargo run --release
 ## License
 
 Apache License, Version 2.0. See [LICENSE](LICENSE) for details.
-
-# # ParCore: A Parallel Runtime for Rust
-
