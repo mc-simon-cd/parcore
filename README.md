@@ -33,8 +33,9 @@ It targets **CPU/NPU** execution (fully **RISC-V compatible**) while offering a 
 *   📜 **CUDA-like DSL**: `parcore_kernel!` macros with type-safe indexing (`Dim3`, `KernelCtx`).
 *   ⚡ **HPC SIMD Engine**: Manual vectorization via `wide` crate with **4x unrolling** and **x86 prefetching**.
 *   🔀 **Smart Scheduler**: Hybrid spin/yield back-off for ultra-low latency barriers.
-*   🧠 **Unified Memory**: `SharedBuffer<T>` for zero-copy data sharing across compute units.
-*   🔧 **Hardware-Agnostic**: **Adaptive tiling** automatically tuned to the CPU's L1-D cache budget.
+*   🧠 **Unified Memory**: `SharedBuffer<T>` for zero-copy data sharing with **Lazy Sync** coherence.
+*   🎮 **WGPU Acceleration**: Specialized parallel dispatch for GPUs/NPUs via vectorized WGSL kernels.
+*   🔧 **Hardware-Agnostic**: **Adaptive tiling** automatischly tuned to hardware cache/compute budgets.
 *   🛡️ **Safe by Design**: Strictly audited `unsafe` usage, fully compliant with **Apache 2.0**.
 
 ---
@@ -44,13 +45,13 @@ It targets **CPU/NPU** execution (fully **RISC-V compatible**) while offering a 
 > Machine: 12-thread CPU, release build (`opt-level=3, lto=true`)
 > Hardware-adaptive tile: **32 × 32**
 
-| Matrix Size | Naive | Tiled (Scalar) | **SIMD (Unroll)** | **Optimized (Par)** | GFlop/s |
-|-------------|-------|----------------|-------------------|---------------------|---------|
-| 256×256     | 9.3 ms| 10.0 ms         | 7.8 ms            | **2.8 ms**          | 11.7    |
-| 512×512     | 70.7 ms| 83.1 ms        | 62.2 ms           | **24.0 ms**         | 11.1    |
-| **1024×1024** | 618 ms| 662 ms         | 549 ms            | **171 ms**          | **12.5**|
+| Matrix Size | Naive (CPU) | Parallel (CPU) | **WGPU (GPU)** | **GFlop/s** |
+|-------------|-------------|----------------|----------------|--------------|
+| 256×256     | 9.3 ms      | 7.5 ms         | **1.4 ms**     | 24.2         |
+| 512×512     | 70.7 ms     | 41.1 ms        | **8.8 ms**     | 30.2         |
+| **1024×1024** | 618 ms    | 335 ms         | **72.7 ms**    | **29.5**     |
 
-*Note: `Optimized` combines B-transpose, manual SIMD, and multi-threading.*
+*Note: `WGPU` results use the optimized `vec4` WGSL kernel with workgroup shared memory.*
 
 ---
 
@@ -106,5 +107,6 @@ cargo run --release
 ## License
 
 Apache License, Version 2.0. See [LICENSE](LICENSE) for details.
+
 # # ParCore: A Parallel Runtime for Rust
 
